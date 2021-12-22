@@ -105,8 +105,17 @@ call plug#begin('~/.vim/plugged')
   " Comments
   Plug 'https://github.com/tpope/vim-commentary'
 
+  " Fuzzy finder
+  Plug 'https://github.com/kien/ctrlp.vim'
+
+  " Syntax Highlighters
+  Plug 'https://github.com/pangloss/vim-javascript'
+
 " Initialize plugin system
 call plug#end()
+
+" Fuzzy finder ignore
+let g:ctrlp_custom_ignore = 'node_modules\|git\|hg\|svn'
 
 " NerdTREE
 nnoremap <leader>e :NERDTreeToggle<CR>
