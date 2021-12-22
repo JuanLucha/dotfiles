@@ -6,6 +6,17 @@ set bs=indent,eol,start		" allow backspacing over everything in insert mode
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more than 50 lines of registers
 set ruler		" show the cursor position all the time
 
+" Cursor from block to pipe
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
+
 " Rebind <Leader> key
 let mapleader = ","
 
