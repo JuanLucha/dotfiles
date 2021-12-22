@@ -93,6 +93,7 @@ function trash () { command mv "$@" ~/.Trash ; }
 # Personal aliases
 alias bo='cd /Users/lucha/code/back-office'
 alias fe='cd /Users/lucha/code/skilling-fe'
+alias feup='cd /Users/lucha/code/skilling-fe && ./../feup.sh'
 alias ss='cd /Users/lucha/code/skilling-site'
 alias ci='cd /Users/lucha/code/ci-scripts'
 alias tv='cd /Users/lucha/code/forex-trading-fe'
