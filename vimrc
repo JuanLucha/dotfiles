@@ -38,6 +38,8 @@ map <leader>q :xa<CR>
 " Status line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
+" Make Silver Searcher not search in filenames
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
@@ -119,8 +121,14 @@ call plug#begin('~/.vim/plugged')
   " Fuzzy finder
   Plug 'https://github.com/kien/ctrlp.vim'
 
+  " File search (requires Silver Searcher: https://github.com/ggreer/the_silver_searcher and
+  " Bat: https://github.com/sharkdp/bat)
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
   " Syntax Highlighters
   Plug 'https://github.com/pangloss/vim-javascript'
+  Plug 'https://github.com/leafgarland/typescript-vim'
 
 " Initialize plugin system
 call plug#end()
