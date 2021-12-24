@@ -39,7 +39,9 @@ map <leader>q :xa<CR>
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 " Make Silver Searcher not search in filenames
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=+ -complete=dir Rag 
+        \ call fzf#vim#ag_raw(<q-args> . ' ~/Documents/Projects/',
+        \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
