@@ -132,6 +132,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'https://github.com/pangloss/vim-javascript'
   Plug 'https://github.com/leafgarland/typescript-vim'
 
+  " Easymotion
+  Plug 'easymotion/vim-easymotion'
+
 " Initialize plugin system
 call plug#end()
 
