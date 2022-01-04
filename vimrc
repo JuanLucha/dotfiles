@@ -135,6 +135,12 @@ call plug#begin('~/.vim/plugged')
   " Easymotion
   Plug 'easymotion/vim-easymotion'
 
+  " Prettier, with post install (yarn install | npm install) then load plugin only for editing supported files
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+  " Autosave
+  Plug 'https://github.com/907th/vim-auto-save'
+
 " Initialize plugin system
 call plug#end()
 
@@ -144,3 +150,12 @@ let g:ctrlp_custom_ignore = 'node_modules\|git\|hg\|svn'
 " NerdTREE
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+
+" Prettier config
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#exec_cmd_async = 1
+
+" Autosave
+let g:auto_save = 1
+
