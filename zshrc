@@ -57,7 +57,7 @@ export NVM_DIR="/Users/lucha/.nvm"
 # Safe rm command to move to trash folder instead of oblivion
 function trash () { command mv "$@" ~/.Trash ; }
 
-# Personal aliases
+# Job aliases
 alias bo='cd /Users/lucha/code/back-office'
 alias fe='cd /Users/lucha/code/skilling-fe'
 alias feup='cd /Users/lucha/code/skilling-fe && ./../feup.sh'
@@ -66,6 +66,8 @@ alias ci='cd /Users/lucha/code/ci-scripts'
 alias tv='cd /Users/lucha/code/forex-trading-fe'
 alias st='cd /Users/lucha/code/system-tests'
 alias ib='cd /Users/lucha/code/partner-fe'
+
+# Personal aliases
 alias dev='sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
 
 # Vim integration

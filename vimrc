@@ -51,6 +51,7 @@ colo slate
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
+set nocompatible
 filetype on
 filetype plugin on
 filetype indent on
