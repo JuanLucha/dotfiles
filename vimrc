@@ -37,6 +37,7 @@ map <leader>q :xa<CR>
 
 " Status line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set laststatus=2
 
 " Make Silver Searcher not search in filenames
 command! -bang -nargs=+ -complete=dir Rag 
@@ -139,9 +140,6 @@ call plug#begin('~/.vim/plugged')
   " Prettier, with post install (yarn install | npm install) then load plugin only for editing supported files
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
-  " Autosave
-  Plug 'https://github.com/907th/vim-auto-save'
-
 " Initialize plugin system
 call plug#end()
 
@@ -158,5 +156,11 @@ let g:prettier#autoformat_require_pragma = 0
 let g:prettier#exec_cmd_async = 1
 
 " Autosave
-let g:auto_save = 1
+set autowriteall
+set updatetime=2000
+augroup AUTOSAVE
+  au!
+  autocmd CursorHold * silent! wall
+  autocmd CursorHold *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+augroup END
 
