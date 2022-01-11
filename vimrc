@@ -146,6 +146,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/coc-angular'
   Plug 'https://github.com/leafgarland/typescript-vim'
 
+  " Markdown
+  Plug 'godlygeek/tabular', {'for': 'markdown'}
+  Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+
 " Initialize plugin system
 call plug#end()
 
@@ -217,3 +221,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_autowrite = 1
