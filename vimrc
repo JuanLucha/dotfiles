@@ -151,6 +151,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
   Plug 'mmai/vim-markdown-wiki', {'for': 'markdown'}
 
+  " Buffers
+  Plug 'bling/vim-bufferline'
+
 " Initialize plugin system
 call plug#end()
 

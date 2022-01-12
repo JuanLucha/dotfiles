@@ -70,8 +70,10 @@ alias ib='cd /Users/lucha/code/partner-fe'
 # Personal aliases
 alias dev='sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
 alias qu='sh /Users/lucha/dotfiles/tmux-note-layout.sh'
+alias dotfiles='cd /Users/lucha/dotfiles && sh tmux-config-layout.sh'
 alias fxon='sh /Users/lucha/dotfiles/fxon.sh'
 alias fxoff='sh /Users/lucha/dotfiles/fxoff.sh'
+alias vim='nvim'
 
 # Vim integration
 bindkey -v
