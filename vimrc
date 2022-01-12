@@ -149,6 +149,7 @@ call plug#begin('~/.vim/plugged')
   " Markdown
   Plug 'godlygeek/tabular', {'for': 'markdown'}
   Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+  Plug 'mmai/vim-markdown-wiki', {'for': 'markdown'}
 
 " Initialize plugin system
 call plug#end()
