@@ -12,7 +12,6 @@ tmux split-window -h -l 90%
 tmux send-keys -t 0 "cmatrix -bau 10" "ENTER"
 tmux split-window -h -l 20%
 tmux send-keys -t 1 "vim vimrc" "ENTER"
-tmux send-keys -t 2 "cmatrix -baC red -u 10" "ENTER"
 
 # Set default window
 tmux select-pane -t 1

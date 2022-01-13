@@ -25,12 +25,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Search with space
 keymap("n", "<Space>", "/", opts)
 
--- Save all buffers at once
--- keymap("n", "<leader>w", ":wa<CR>", opts)
-
--- Toggles the explorer
--- keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -38,8 +32,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Open telescope
--- keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
--- keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
+keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
 
 -- Paste without yanking the old text
 keymap("v", "p", '"_dP', opts)
