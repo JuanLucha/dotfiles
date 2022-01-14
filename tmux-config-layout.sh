@@ -7,7 +7,7 @@
 # Execute this bash file in a tmux window
 
 tmux rename-window config
-tmux move-window -t 9
+tmux move-window -t 0
 tmux split-window -h -l 90%
 tmux send-keys -t 0 "cmatrix -bau 10" "ENTER"
 tmux split-window -h -l 20%

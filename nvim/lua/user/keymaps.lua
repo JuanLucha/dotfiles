@@ -48,4 +48,3 @@ keymap("n", "<S-k>", "<C-u>", opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "fj", "<ESC>", opts)
-
