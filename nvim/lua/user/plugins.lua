@@ -94,11 +94,17 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
-	-- Autosave
-	use("Pocco81/AutoSave.nvim")
+	-- Vimwiki and markdown
+	use("vimwiki/vimwiki")
+	use({
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		run = "cd app && yarn install",
+	})
 
 	-- SoloGM
-	use("~/code/solo-rpg-lib-neovim")
+	-- use("~/code/solo-rpg-lib-neovim")
+	use("juanlucha/solo-rpg-neovim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
