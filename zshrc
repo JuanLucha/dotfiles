@@ -76,7 +76,7 @@ alias dotfiles='cd /Users/lucha/dotfiles && sh tmux-config-layout.sh'
 alias fxon='sh /Users/lucha/dotfiles/fxon.sh'
 alias fxoff='sh /Users/lucha/dotfiles/fxoff.sh'
 alias vim='nvim'
-alias sb='cd /Users/lucha/Dropbox/second-brain && sh /Users/lucha/dotfiles/tmux-second-brain-layout.sh'
+alias sb='cd /Users/lucha/Dropbox/second-brain && vim index.md'
 
 # Vim integration
 bindkey -v

@@ -96,12 +96,16 @@ return packer.startup(function(use)
 
 	-- Vimwiki and markdown
 	use("vimwiki/vimwiki")
+	-- use("iamcco/markdown-preview.nvim")
 	use({
-		"iamcco/markdown-preview.nvim",
+		"instant-markdown/vim-instant-markdown",
 		ft = "markdown",
-		run = "cd app && yarn install",
+		run = "yarn install",
 	})
-
+	use("godlygeek/tabular")
+	use("elzr/vim-json")
+	use("plasticboy/vim-markdown")
+	--
 	-- SoloGM
 	-- use("~/code/solo-rpg-lib-neovim")
 	use("juanlucha/solo-rpg-neovim")
