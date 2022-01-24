@@ -85,6 +85,8 @@ local mappings = {
 		"Buffers",
 	},
 	["B"] = { ":VimwikiMakeDiaryNote<CR>", "New Note" },
+	["i"] = { ":VimwikiIndex<CR>", "Brain Index" },
+
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>wa!<CR>", "Save" },
 	["q"] = { "<cmd>q<CR>", "Close Window" },

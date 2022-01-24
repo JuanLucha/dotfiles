@@ -45,9 +45,6 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-j>", "<C-d>", opts)
 keymap("n", "<S-k>", "<C-u>", opts)
 
--- VimWiki
-keymap("n", "<leader-i>", ":VimwikiIndex<CR>", opts)
-
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "fj", "<ESC>", opts)

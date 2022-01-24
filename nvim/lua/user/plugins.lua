@@ -98,12 +98,7 @@ return packer.startup(function(use)
 
 	-- Vimwiki and markdown
 	use("vimwiki/vimwiki")
-	-- use("iamcco/markdown-preview.nvim")
-	use({
-		"instant-markdown/vim-instant-markdown",
-		ft = "markdown",
-		run = "yarn install",
-	})
+	use("jdonaldson/vim-markdown-link-convert")
 	use("godlygeek/tabular")
 	use("elzr/vim-json")
 	use("plasticboy/vim-markdown")
