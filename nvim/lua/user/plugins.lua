@@ -79,6 +79,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("nvim-lua/lsp-status.nvim") -- LSP status bar
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -93,6 +94,7 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+	use("tpope/vim-fugitive")
 
 	-- Vimwiki and markdown
 	use("vimwiki/vimwiki")
@@ -105,6 +107,7 @@ return packer.startup(function(use)
 	use("godlygeek/tabular")
 	use("elzr/vim-json")
 	use("plasticboy/vim-markdown")
+
 	--
 	-- SoloGM
 	-- use("~/code/solo-rpg-lib-neovim")

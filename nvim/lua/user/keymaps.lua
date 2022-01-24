@@ -51,3 +51,10 @@ keymap("n", "<leader-i>", ":VimwikiIndex<CR>", opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "fj", "<ESC>", opts)
+
+-- Copy the whole line as god demands
+keymap("n", "Y", "yy", opts)
+
+-- Git
+keymap("n", "ch", ":diffget //2<CR>", opts)
+keymap("n", "cl", ":diffget //3<CR>", opts)

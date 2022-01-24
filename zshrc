@@ -24,32 +24,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 ZSH_DISABLE_COMPFIX="true"
 
 export NVM_DIR="$HOME/.nvm"
@@ -62,7 +36,6 @@ function trash () { command mv "$@" ~/.Trash ; }
 # Job aliases
 alias bo='cd /Users/lucha/code/back-office'
 alias fe='cd /Users/lucha/code/skilling-fe'
-alias feup='cd /Users/lucha/code/skilling-fe && ./../feup.sh'
 alias ss='cd /Users/lucha/code/skilling-site'
 alias ci='cd /Users/lucha/code/ci-scripts'
 alias tv='cd /Users/lucha/code/forex-trading-fe'
@@ -70,11 +43,8 @@ alias st='cd /Users/lucha/code/system-tests'
 alias ib='cd /Users/lucha/code/partner-fe'
 
 # Personal aliases
-alias dev='sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
-alias qu='sh /Users/lucha/dotfiles/tmux-note-layout.sh'
-alias dotfiles='cd /Users/lucha/dotfiles && sh tmux-config-layout.sh'
-alias fxon='sh /Users/lucha/dotfiles/fxon.sh'
-alias fxoff='sh /Users/lucha/dotfiles/fxoff.sh'
+alias dev='tmux rename-window dev && sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
+alias df='cd /Users/lucha/dotfiles && tmux rename-window config && sh tmux-dev-layout.sh'
 alias vim='nvim'
 alias sb='cd /Users/lucha/Dropbox/second-brain && vim index.md'
 
