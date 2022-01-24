@@ -69,6 +69,20 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+	use({
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+			})
+		end,
+
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
+	})
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -103,7 +117,9 @@ return packer.startup(function(use)
 	use("elzr/vim-json")
 	use("plasticboy/vim-markdown")
 
-	--
+	-- Blockchain
+	use("lunarvim/vim-solidity")
+
 	-- SoloGM
 	-- use("~/code/solo-rpg-lib-neovim")
 	use("juanlucha/solo-rpg-neovim")

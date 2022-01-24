@@ -67,7 +67,7 @@ zle -N zle-keymap-select
 
 export KEYTIMEOUT=1
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Making more space for operations like tests
 export NODE_OPTIONS=“--max-old-space-size=8192”
