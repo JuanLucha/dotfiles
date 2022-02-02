@@ -13,3 +13,4 @@ tmux send-keys -t 1 "vim" "ENTER"
 # # Set default window
 tmux select-pane -t 1
 
+
