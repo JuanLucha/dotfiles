@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/lucha/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -26,27 +26,16 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_DISABLE_COMPFIX="true"
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # Safe rm command to move to trash folder instead of oblivion
 function trash () { command mv "$@" ~/.Trash ; }
 
 # Job aliases
-alias bo='cd /Users/lucha/code/back-office'
-alias fe='cd /Users/lucha/code/skilling-fe'
-alias ss='cd /Users/lucha/code/skilling-site'
-alias ci='cd /Users/lucha/code/ci-scripts'
-alias tv='cd /Users/lucha/code/forex-trading-fe'
-alias st='cd /Users/lucha/code/system-tests'
-alias ib='cd /Users/lucha/code/partner-fe'
+alias com='ssh -A wpcom'
 
 # Personal aliases
 alias dev='tmux rename-window dev && sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
 alias df='cd /Users/lucha/dotfiles && tmux rename-window config && sh tmux-dev-layout.sh'
 alias vim='nvim'
-alias sb='cd /Users/lucha/Dropbox/second-brain && vim index.md'
 
 # Vim integration
 bindkey -v
@@ -75,3 +64,13 @@ export NODE_OPTIONS=“--max-old-space-size=8192”
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/juanlucha/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
