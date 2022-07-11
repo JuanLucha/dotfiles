@@ -46,7 +46,7 @@ packer.startup(function()
   local use = use
 
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  use ({'wbthomason/packer.nvim', opt = false})
 
   -- Code highlight
   use 'nvim-treesitter/nvim-treesitter'
@@ -72,6 +72,7 @@ packer.startup(function()
 
   -- Tmux integration --
   use 'christoomey/vim-tmux-navigator'
+
   
   -- File explorer --
   use 'kyazdani42/nvim-tree.lua'
@@ -79,11 +80,14 @@ packer.startup(function()
 
   -- Theme --
   use 'rakr/vim-one'
+
+  -- Zen mode editing --
+  use 'folke/zen-mode.nvim'
   
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
-    require("packer").sync()
+    require("packer")
   end
 
   end
@@ -102,3 +106,4 @@ configs.setup {
 
 -- NvimTree setup
 require("nvim-tree").setup()
+

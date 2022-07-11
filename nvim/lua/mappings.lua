@@ -48,3 +48,6 @@ key_mapper('n', '<leader>eq', ':NvimTreeClose<CR>')
 
 -- Copy path to clipboard
 key_mapper('n', '<leader>x', ':let @"=expand("%:p")')
+
+-- Zen mode
+key_mapper('n', '<CR>', ':ZenMode')
