@@ -57,7 +57,12 @@ packer.startup(function()
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
@@ -83,6 +88,15 @@ packer.startup(function()
 
   -- Zen mode editing --
   use 'folke/zen-mode.nvim'
+
+  -- Autopair symbols
+  use 'jiangmiao/auto-pairs'
+
+  -- Comments
+  use 'tpope/vim-commentary'
+
+  -- Formatter
+  use 'sbdchd/neoformat'
   
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -107,3 +121,5 @@ configs.setup {
 -- NvimTree setup
 require("nvim-tree").setup()
 
+-- Neoformat using local configuration file
+vim.g.neoformat_try_node_exe = 1
