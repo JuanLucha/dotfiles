@@ -23,12 +23,15 @@ ZSH_DISABLE_COMPFIX="true"
 function trash () { command mv "$@" ~/.Trash ; }
 
 # Job aliases
-alias com='ssh -A wpcom'
+alias com='ssh -AX wpcom'
+alias uni='unison -ui text -repeat watch automattic-sandbox'
 
 # Personal aliases
 alias dev='tmux rename-window dev && sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
 alias df='cd /Users/lucha/dotfiles && tmux rename-window config && sh tmux-dev-layout.sh'
 alias vim='nvim'
+alias v='nvim'
+alias t='tmux a'
 
 # Vim integration
 bindkey -v

@@ -108,7 +108,13 @@ packer.startup(function()
 )
 
 -- Telescope setup
-require('telescope').setup()
+require('telescope').setup({
+    pickers = {
+      find_files = {
+        path_display = { "truncate" }
+      }
+    }
+  })
 
 -- Treesitter config
 local configs = require'nvim-treesitter.configs'
