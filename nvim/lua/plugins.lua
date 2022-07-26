@@ -109,10 +109,8 @@ packer.startup(function()
 
 -- Telescope setup
 require('telescope').setup({
-    pickers = {
-      find_files = {
-        path_display = { "truncate" }
-      }
+    defaults = {
+      path_display = {"truncate"}
     }
   })
 
