@@ -38,7 +38,7 @@ key_mapper('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 
 -- Fuzzy finding
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
-key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
+key_mapper('n', '<leader>fs', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
 

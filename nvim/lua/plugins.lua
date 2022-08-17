@@ -72,7 +72,15 @@ packer.startup(function()
   -- Fuzzy finding
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/telescope.nvim'
+  use {
+   'nvim-lua/telescope.nvim',
+   requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
+  }
   use 'jremmen/vim-ripgrep'
 
   -- Tmux integration --
