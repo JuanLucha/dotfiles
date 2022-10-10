@@ -86,14 +86,13 @@ packer.startup(function()
   -- Tmux integration --
   use 'christoomey/vim-tmux-navigator'
 
-  
   -- File explorer --
   use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
 
   -- Theme --
   use 'rakr/vim-one'
-  use 'Rigellute/shades-of-purple.vim'
+  use {'dracula/vim', as = 'dracula'}
 
   -- Zen mode editing --
   use 'folke/zen-mode.nvim'
