@@ -1,12 +1,12 @@
 ------------------
 -- Color scheme --
 ------------------
-vim.g.airline_theme='one'
+vim.g.airline_theme='shades_of_purple'
 
 vim.cmd [[
 set background=dark
 try
-  colorscheme one
+  colorscheme shades_of_purple
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
 endtry

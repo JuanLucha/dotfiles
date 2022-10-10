@@ -93,6 +93,7 @@ packer.startup(function()
 
   -- Theme --
   use 'rakr/vim-one'
+  use 'Rigellute/shades-of-purple.vim'
 
   -- Zen mode editing --
   use 'folke/zen-mode.nvim'
