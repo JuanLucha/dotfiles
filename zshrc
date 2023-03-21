@@ -89,3 +89,6 @@ unset __conda_setup
 # PHP-VERSION
 source $(brew --prefix php-version)/php-version.sh
 php-version 8
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export SBT_OPTS="-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=8080 -Duser.timezone=UTC"
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1/libexec/openjdk.jdk/Contents/Home"
