@@ -25,13 +25,22 @@ function trash () { command mv "$@" ~/.Trash ; }
 # Job aliases
 alias com='ssh -AX wpcom'
 alias uni='unison -ui text -repeat watch automattic-sandbox'
+alias jc="code projects/plugins/jetpack"
+alias jt="jurassictube -u juanlucha -s jurassic-john -h localhost:80"
+alias jt-break="jurassictube -b -s jurassic-john"
+alias jl="tail -f tools/docker/wordpress/wp-content/debug.log"
+alias js="jetpack rsync jetpack wpdev@juanlucha.dev.dfw.wordpress.com:~/public_html/wp-content/mu-plugins/jetpack-plugin/production"
+alias jb="jetpack build plugins/jetpack"
+alias jw="jetpack watch plugins/jetpack"
+alias jd="jetpack docker up"
 
 # Personal aliases
 alias dev='tmux rename-window dev && sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
 alias df='cd /Users/lucha/dotfiles && tmux rename-window config && sh tmux-dev-layout.sh'
 alias vim='nvim'
 alias v='nvim'
-alias t='tmux a'
+alias t='/Users/juanlucha/dotfiles/reset-tmux.sh'
+alias matrix='ssh root@68.183.73.49'
 
 # Vim integration
 bindkey -v
@@ -40,15 +49,15 @@ bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^r' history-incremental-search-backward
 
-precmd() { RPROMPT="" }
-function zle-line-init zle-keymap-select {
-   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-   zle reset-prompt
-}
+# precmd() { RPROMPT="" }
+# function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+# }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 export KEYTIMEOUT=1
 
@@ -92,3 +101,9 @@ php-version 8
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export SBT_OPTS="-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=8080 -Duser.timezone=UTC"
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1/libexec/openjdk.jdk/Contents/Home"
+export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.2/sbin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.2/sbin:$PATH"
