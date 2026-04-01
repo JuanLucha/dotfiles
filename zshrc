@@ -11,7 +11,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git jump brew colored-man-pages fast-syntax-highlighting zsh-autosuggestions)
+plugins=(git jump brew colored-man-pages fast-syntax-highlighting zsh-autosuggestions poetry autoenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,10 +23,13 @@ ZSH_DISABLE_COMPFIX="true"
 function trash () { command mv "$@" ~/.Trash ; }
 
 # Personal aliases
-alias dev='tmux rename-window dev && sh /Users/lucha/dotfiles/tmux-dev-layout.sh'
-alias df='cd /Users/lucha/dotfiles && tmux rename-window config && sh tmux-dev-layout.sh'
-alias t='/Users/lucha/dotfiles/reset-tmux.sh'
+alias t='tmux ls 2>/dev/null | grep -q . && tmux a || tmux'
+alias tk='tmux kill-server'
 alias matrix='ssh root@68.183.73.49'
+alias v='nvim'
+alias vim='nvim'
+alias p3='python3'
+alias red='ssh lucha@matrix.johnfightgaming.com -p 2314'
 
 # Vim integration
 bindkey -v
@@ -46,11 +49,51 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# Autosuggest keybinding
-bindkey '^ ' autosuggest-accept
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export SBT_OPTS="-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=8080 -Duser.timezone=UTC"
-export JAVA_HOME="/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1/libexec/openjdk.jdk/Contents/Home"
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export PATH="$JAVA_HOME/bin:$PATH"
+
+## Pyenv config
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Activate python environments on entering folders that includes an env folder themselves
+
+# Function to activate automatically a virtual environment
+function auto_activate_virtualenv() {
+    if [[ -d "./env" && -f "./env/bin/activate" ]]; then
+        # Desactiva cualquier entorno virtual activo previamente
+        deactivate 2>/dev/null
+        
+        # Activa el entorno virtual
+        source ./env/bin/activate
+        echo "Virtual environment './env' activated."
+    fi
+}
+
+# Activate the function changing the directory
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_activate_virtualenv
+
+# Executes the function on terminal startup
+auto_activate_virtualenv
+
+# Android sdk
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+
+# Autosuggest keybinding
+bindkey '^ ' autosuggest-accept
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# Added by Windsurf
+export PATH="/Users/lucha/.codeium/windsurf/bin:$PATH"
+export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
