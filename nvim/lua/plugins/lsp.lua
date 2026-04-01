@@ -99,46 +99,6 @@ return {
         end
       }
     })
-          vim.g.zig_fmt_parse_errors = 0
-          vim.g.zig_fmt_autosave = 0
-        end,
-        ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                runtime = { version = "Lua 5.1" },
-                diagnostics = {
-                  globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                }
-              }
-            }
-          }
-        end,
-        ["angularls"] = function()
-          local lspconfig = require("lspconfig")
-          local default_node_modules = vim.fn.getcwd() .. "/node_modules"
-
-          local ngls_cmd = {
-            "ngserver",
-            "--stdio",
-            "--tsProbeLocations",
-            default_node_modules,
-            "--ngProbeLocations",
-            default_node_modules,
-            "--experimental-ivy",
-          }
-
-          lspconfig.angularls.setup({
-            cmd = ngls_cmd,
-            on_new_config = function(new_config)
-              new_config.cmd = ngls_cmd
-            end,
-          })
-        end
-      }
-    })
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
