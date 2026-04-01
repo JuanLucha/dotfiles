@@ -8,6 +8,8 @@ return {
     },
 
     config = function()
+        local builtin = require('telescope.builtin')
+
         local function is_git_dir()
             return vim.fn.isdirectory(".git") == 1 or vim.fn.system("git rev-parse --git-dir 2>/dev/null") ~= ""
         end
@@ -22,7 +24,6 @@ return {
 
         require('telescope').setup({})
 
-        local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
         vim.keymap.set('n', '<C-p>', git_files_or_fallback, {})
         vim.keymap.set('n', '<leader>pws', function()
