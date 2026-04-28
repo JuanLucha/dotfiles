@@ -97,3 +97,6 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 # Added by Windsurf
 export PATH="/Users/lucha/.codeium/windsurf/bin:$PATH"
 export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
+
+# Added by Antigravity
+export PATH="/Users/lucha/.antigravity/antigravity/bin:$PATH"
