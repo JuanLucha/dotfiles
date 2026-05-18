@@ -100,3 +100,10 @@ export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
 
 # Added by Antigravity
 export PATH="/Users/lucha/.antigravity/antigravity/bin:$PATH"
+
+# bun completions
+[ -s "/Users/lucha/.bun/_bun" ] && source "/Users/lucha/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
