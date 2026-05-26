@@ -1,0 +1,10 @@
+[Unit]
+Description=MT Semantic Memory Indexer
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/dotfiles/mt-mcp/.venv/bin/python %h/dotfiles/mt-mcp/indexer.py
+WorkingDirectory=%h/dotfiles/mt-mcp
+StandardOutput=append:/tmp/mt_indexer.log
+StandardError=append:/tmp/mt_indexer.err

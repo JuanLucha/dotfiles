@@ -3,8 +3,24 @@ set -e
 
 # Configuración
 MEMORY_DIR="$HOME/.gemini/memory_db"
-# Asumimos que Google Drive está en esta ruta. Cámbialo si tu ruta exacta a Drive es distinta.
-CLOUD_BACKUP_DIR="$HOME/Google Drive/Mi unidad/Backups/MT"
+
+# Cargar variables de entorno si existen
+if [ -f "$HOME/dotfiles/mt-mcp/.env" ]; then
+    source "$HOME/dotfiles/mt-mcp/.env"
+fi
+
+# Asignar directorio de backup por defecto según OS si no está definido en .env
+if [ -z "$CLOUD_BACKUP_DIR" ]; then
+    if [ "$(uname -s)" = "Darwin" ]; then
+        CLOUD_BACKUP_DIR="$HOME/Google Drive/Mi unidad/Backups/MT"
+    else
+        CLOUD_BACKUP_DIR="$HOME/backups/mt_memory_backups"
+    fi
+fi
+
+# Crear directorio si no existe
+mkdir -p "$CLOUD_BACKUP_DIR"
+
 DATE=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILE="mt_memory_${DATE}.tar.gz"
 TEMP_BACKUP_PATH="/tmp/${BACKUP_FILE}"

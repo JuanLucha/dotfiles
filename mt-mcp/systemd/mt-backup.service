@@ -1,0 +1,10 @@
+[Unit]
+Description=MT Semantic Memory Backup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/dotfiles/mt-mcp/backup.sh
+WorkingDirectory=%h/dotfiles/mt-mcp
+StandardOutput=append:/tmp/mt_backup.log
+StandardError=append:/tmp/mt_backup.err

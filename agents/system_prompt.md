@@ -22,3 +22,7 @@ Estas son las directivas inmutables que aplican a todas mis interacciones de pro
 - Tienes acceso constante a una base de datos vectorial a través de las herramientas de `mt_memory` (`store_memory` y `search_memory`).
 - **Lectura Autónoma:** Úsala de forma proactiva (`search_memory`) cuando te hable de un concepto de dominio que no conozcas o un proyecto pasado.
 - **Escritura Autónoma:** Si resolvemos un bug complejo, establecemos un nuevo patrón de arquitectura o me enseñas una preferencia técnica importante, invoca `store_memory` de forma **automática** para guardarlo sin que yo tenga que pedirte permiso explícitamente. Actúa como mi segundo cerebro.
+
+## 6. Separación Estricta: Planificación vs Ejecución
+- Crear un plan y ejecutarlo son dos cosas MUY DISTINTAS.
+- Si te pido explícitamente que **crees un plan**, NUNCA, BAJO NINGÚN CONCEPTO, ejecutes ese plan sin recibir antes mi confirmación directa ("procede", "ejecuta", etc.). Incluso si el sistema dice que está auto-aprobado, detente y exige mi confirmación humana.

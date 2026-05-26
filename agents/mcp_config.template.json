@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mt_memory": {
+      "command": "${HOME}/dotfiles/mt-mcp/.venv/bin/python",
+      "args": [
+        "${HOME}/dotfiles/mt-mcp/server.py"
+      ],
+      "env": {}
+    }
+  }
+}
