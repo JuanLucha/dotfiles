@@ -2,17 +2,38 @@ import os
 import hashlib
 import sqlite3
 import glob
+from pathlib import Path
 import chromadb
 
-# Configuración
+# --- Configuración ---
 FOAM_DIR = "/Users/lucha/cyber-brain"
-MEMORY_DIR = os.path.expanduser("~/.gemini/memory_db")
 COLLECTION_NAME = "cyber_brain_memory"
 STATE_DB = os.path.expanduser("~/.gemini/memory_db/indexer_state.db")
 
-# Inicializar ChromaDB
-client = chromadb.PersistentClient(path=MEMORY_DIR)
+# Cargar .env si existe
+_env_file = Path(__file__).parent / ".env"
+if _env_file.exists():
+    for line in _env_file.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip())
+
+# Modo de conexión: HTTP (remoto) o local
+_chroma_host = os.environ.get("CHROMA_SERVER_HOST")
+_chroma_port = int(os.environ.get("CHROMA_SERVER_PORT", "8000"))
+
+if _chroma_host:
+    print(f"🌐 Indexer conectando a ChromaDB remoto en {_chroma_host}:{_chroma_port}")
+    MEMORY_DIR = None
+    client = chromadb.HttpClient(host=_chroma_host, port=_chroma_port)
+else:
+    MEMORY_DIR = os.path.expanduser("~/.gemini/memory_db")
+    print(f"💾 Indexer usando ChromaDB local en {MEMORY_DIR}")
+    client = chromadb.PersistentClient(path=MEMORY_DIR)
+
 collection = client.get_or_create_collection(name=COLLECTION_NAME)
+
 
 def init_state_db():
     """Inicializa la base de datos local (SQLite) para guardar hashes de archivos y no reindexar a lo tonto."""

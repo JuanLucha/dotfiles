@@ -38,12 +38,26 @@ cd ..
 *Esto creará la carpeta `.venv` requerida por el cargador de MCP.*
 
 ### Paso 3: Ejecutar el Instalador Maestro
-Enlaza el system prompt, registra el servidor MCP, instala las skills y levanta los daemons del sistema (LaunchAgents en macOS o systemctl en Linux):
+Enlaza el system prompt, registra el servidor MCP, instala las skills y levanta los daemons del sistema:
 ```bash
 cd agents
 chmod +x install.sh
 ./install.sh
 ```
+
+---
+
+## Arquitectura de Memoria Semántica
+
+### Modo Local (por defecto)
+Sin configuración extra. Cada máquina tiene su propio ChromaDB local en `~/.gemini/memory_db`.
+
+### Modo PRO — Memoria Compartida entre Máquinas
+Si tienes varias máquinas (ej. Mac + Ubuntu Server), puedes centralizar la memoria vectorial en el servidor Ubuntu. Todas las máquinas leerán y escribirán en la misma base de datos.
+
+Ver instrucciones detalladas en [`mt-mcp/README.md`](mt-mcp/README.md).
+
+
 
 ---
 
