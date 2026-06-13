@@ -43,3 +43,11 @@ nvim/undodir
 
 
 nvim/plugin/packer_compiled.lua
+
+# Environment-specific local dirs
+.antigravity/
+
+# Python virtual environments
+.venv/
+venv/
+env/
