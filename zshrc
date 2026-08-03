@@ -111,3 +111,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Added by Antigravity CLI installer
 export PATH="/Users/lucha/.local/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/lucha/.antigravity-ide/antigravity-ide/bin:$PATH"
