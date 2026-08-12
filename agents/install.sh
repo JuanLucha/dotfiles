@@ -31,6 +31,11 @@ done
 echo "⚙️ Generando mcp_config.json con rutas absolutas locales..."
 cat "$SETUP_DIR/mcp_config.template.json" | sed "s|\${HOME}|$HOME|g" > "$GEMINI_CONFIG_DIR/mcp_config.json"
 
+# 4.5. Instalar statusline.sh para Antigravity CLI
+echo "🔗 Enlazando custom statusline para Antigravity CLI..."
+mkdir -p "$HOME/.gemini/antigravity-cli"
+ln -sf "$SETUP_DIR/statusline.sh" "$HOME/.gemini/antigravity-cli/statusline.sh"
+
 # 5. Instalar automatizaciones de sistema (Indexador y Backup)
 echo "🖥️ Detectando sistema operativo ($OS) para instalar demonios..."
 
