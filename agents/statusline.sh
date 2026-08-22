@@ -38,32 +38,37 @@ if [ -n "$remaining_pct_formatted" ]; then
   right_text=" ⚡ $remaining_pct_formatted%"
 fi
 
-mode=$(echo "$input" | jq -r '.agent_state // empty')
-if [ -n "$mode" ]; then
-  # Lowercase mode for easier matching using tr for max compat
-  mode_lower=$(echo "$mode" | tr '[:upper:]' '[:lower:]')
-  mode_icon="✨"
-  case "$mode_lower" in
-    *plan*) mode_icon="📝" ;;
-    *accept*) mode_icon="✅" ;;
-    *chat*) mode_icon="💬" ;;
-    *code*|*work*) mode_icon="💻" ;;
-    *diagnose*) mode_icon="🩺" ;;
-    *test*) mode_icon="🧪" ;;
-    *debug*) mode_icon="🐛" ;;
-  esac
-  
-  # Replace underscores with spaces
-  mode_clean="${mode//_/ }"
-  
-  # Capitalize first letter of mode for display using awk
-  mode_cap=$(echo "$mode_clean" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
-  
-  if [ -n "$right_text" ]; then
-    right_text="$right_text |"
-  fi
-  right_text="$right_text $mode_icon $mode_cap"
+# Read toolPermission from settings.json
+settings_file="$HOME/.gemini/antigravity-cli/settings.json"
+mode_raw="unknown"
+if [ -f "$settings_file" ]; then
+  mode_raw=$(jq -r '.toolPermission // "unknown"' "$settings_file" 2>/dev/null)
 fi
+
+mode_icon="✨"
+mode_cap="Unknown"
+
+case "$mode_raw" in
+  "always-proceed") 
+    mode_icon="✅"
+    mode_cap="Accept Edits"
+    ;;
+  "require-approval"|*ask*|*plan*) 
+    mode_icon="📝"
+    mode_cap="Plan"
+    ;;
+  *)
+    # Default fallback formatting
+    mode_clean="${mode_raw//_/ }"
+    mode_clean="${mode_clean//-/ }"
+    mode_cap=$(echo "$mode_clean" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
+    ;;
+esac
+
+if [ -n "$right_text" ]; then
+  right_text="$right_text |"
+fi
+right_text="$right_text $mode_icon $mode_cap"
 
 if [ -n "$model" ]; then
   if [ -n "$right_text" ]; then
