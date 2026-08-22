@@ -1,31 +1,31 @@
 ---
 name: init-project
-description: Inyecta un CONTEXT.md base en el repositorio actual para establecer el Local Context del proyecto. Úsalo cada vez que empieces un nuevo repositorio o proyecto para separar las reglas globales de las locales.
+description: Injects a base CONTEXT.md into the current repository to establish the Local Context of the project. Use this whenever you start working on a new repository or project to separate global rules from local ones.
 ---
 
-Crea un archivo llamado `CONTEXT.md` en la raíz del espacio de trabajo actual. Actúa como el glosario de dominio y registro de decisiones de arquitectura (Local Context) exclusivo para este proyecto.
+Create a file named `CONTEXT.md` at the root of the current workspace. It acts as the domain glossary and architectural decision record (Local Context) exclusive to this project.
 
-Si el archivo ya existe, no lo sobrescribas. Informa al usuario de que el proyecto ya tiene un `CONTEXT.md`.
+If the file already exists, do not overwrite it. Inform the user that the project already has a `CONTEXT.md`.
 
-Reemplaza `[Nombre del Proyecto]` por el nombre real de la carpeta raíz y crea el archivo con este contenido exacto:
+Replace `[Project Name]` with the actual name of the root folder and create the file with this exact content:
 
 ---
 
-# [Nombre del Proyecto] - Local Context
+# [Project Name] - Local Context
 
-Este archivo define el glosario de dominio específico de este proyecto y las reglas locales (frameworks, convenciones arquitectónicas) que sobreescriben o complementan a los Universal Standards del sistema.
+This file defines the domain glossary specific to this project and the local rules (frameworks, architectural conventions) that override or complement the system's Universal Standards.
 
-## Glosario de Dominio (Language)
+## Domain Glossary (Language)
 
-_Define aquí los términos críticos de tu lógica de negocio (Domain-Driven Design)._
+_Define the critical terms of your business logic (Domain-Driven Design) here._
 
-**EjemploTermino**:
-Definición de qué es esto en el contexto de este proyecto.
-_Avoid_: Terminos alternativos confusos.
+**ExampleTerm**:
+Definition of what this is in the context of this project.
+_Avoid_: Confusing alternative terms.
 
-## Arquitectura y Stack
+## Architecture and Stack
 
-- **Stack Principal:** (ej. Next.js, FastAPI, etc.)
-- **Estrategia de Estilos:** (ej. Vanilla CSS, Tailwind)
-- **Base de Datos:** (ej. PostgreSQL, Supabase)
-- **Convenciones Específicas:** (Cualquier regla de código que solo aplique a este repo y no esté en tus Universal Standards).
+- **Main Stack:** (e.g., Next.js, FastAPI, etc.)
+- **Styling Strategy:** (e.g., Vanilla CSS, Tailwind)
+- **Database:** (e.g., PostgreSQL, Supabase)
+- **Specific Conventions:** (Any coding rules that only apply to this repo and aren't in your Universal Standards).
