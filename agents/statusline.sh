@@ -37,6 +37,30 @@ right_text=""
 if [ -n "$remaining_pct_formatted" ]; then
   right_text=" ⚡ $remaining_pct_formatted%"
 fi
+
+mode=$(echo "$input" | jq -r '.mode // empty')
+if [ -n "$mode" ]; then
+  # Lowercase mode for easier matching using tr for max compat
+  mode_lower=$(echo "$mode" | tr '[:upper:]' '[:lower:]')
+  mode_icon="✨"
+  case "$mode_lower" in
+    *plan*) mode_icon="📝" ;;
+    *accept*) mode_icon="✅" ;;
+    *chat*) mode_icon="💬" ;;
+    *code*) mode_icon="💻" ;;
+    *diagnose*) mode_icon="🩺" ;;
+    *test*) mode_icon="🧪" ;;
+    *debug*) mode_icon="🐛" ;;
+  esac
+  # Capitalize first letter of mode for display using awk
+  mode_cap=$(echo "$mode" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
+  
+  if [ -n "$right_text" ]; then
+    right_text="$right_text |"
+  fi
+  right_text="$right_text $mode_icon $mode_cap"
+fi
+
 if [ -n "$model" ]; then
   if [ -n "$right_text" ]; then
     right_text="$right_text |"
