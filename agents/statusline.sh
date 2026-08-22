@@ -40,16 +40,18 @@ fi
 
 # Read toolPermission from settings.json
 settings_file="$HOME/.gemini/antigravity-cli/settings.json"
-mode_raw="unknown"
-if [ -f "$settings_file" ]; then
-  mode_raw=$(jq -r '.toolPermission // "unknown"' "$settings_file" 2>/dev/null)
+mode_raw=$(echo "$input" | jq -r '.cycle_mode // empty')
+if [ -z "$mode_raw" ]; then
+  if [ -f "$settings_file" ]; then
+    mode_raw=$(jq -r '.toolPermission // "unknown"' "$settings_file" 2>/dev/null)
+  fi
 fi
 
 mode_icon="✨"
 mode_cap="Unknown"
 
 case "$mode_raw" in
-  "always-proceed") 
+  "always-proceed"|"accept-edits") 
     mode_icon="✅"
     mode_cap="Accept Edits"
     ;;
