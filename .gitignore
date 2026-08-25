@@ -51,3 +51,4 @@ nvim/plugin/packer_compiled.lua
 .venv/
 venv/
 env/
+nvim.bak
