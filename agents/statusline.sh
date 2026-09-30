@@ -38,39 +38,7 @@ if [ -n "$remaining_pct_formatted" ]; then
   right_text=" ⚡ $remaining_pct_formatted%"
 fi
 
-# Read toolPermission from settings.json
-settings_file="$HOME/.gemini/antigravity-cli/settings.json"
-mode_raw=$(echo "$input" | jq -r '.cycle_mode // empty')
-if [ -z "$mode_raw" ]; then
-  if [ -f "$settings_file" ]; then
-    mode_raw=$(jq -r '.toolPermission // "unknown"' "$settings_file" 2>/dev/null)
-  fi
-fi
 
-mode_icon="✨"
-mode_cap="Unknown"
-
-case "$mode_raw" in
-  "always-proceed"|"accept-edits") 
-    mode_icon="✅"
-    mode_cap="Accept Edits"
-    ;;
-  "require-approval"|*ask*|*plan*) 
-    mode_icon="📝"
-    mode_cap="Plan"
-    ;;
-  *)
-    # Default fallback formatting
-    mode_clean="${mode_raw//_/ }"
-    mode_clean="${mode_clean//-/ }"
-    mode_cap=$(echo "$mode_clean" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
-    ;;
-esac
-
-if [ -n "$right_text" ]; then
-  right_text="$right_text |"
-fi
-right_text="$right_text $mode_icon $mode_cap"
 
 if [ -n "$model" ]; then
   if [ -n "$right_text" ]; then
@@ -78,6 +46,32 @@ if [ -n "$model" ]; then
   fi
   right_text="$right_text 🤖 $model"
 fi
+
+# === API USAGE CACHE LOGIC ===
+CACHE_FILE="/tmp/.agy_usage_cache"
+UPDATE_SCRIPT="$HOME/.gemini/antigravity-cli/update_usage.sh"
+
+CACHE_AGE=9999
+if [ -f "$CACHE_FILE" ]; then
+  CACHE_AGE=$(( $(date +%s) - $(stat -f %m "$CACHE_FILE") ))
+fi
+
+# Update every 5 minutes (300 seconds) in background
+if [ $CACHE_AGE -gt 300 ] && [ -f "$UPDATE_SCRIPT" ]; then
+  bash -c "nohup \"$UPDATE_SCRIPT\" > /dev/null 2>&1 &"
+fi
+
+if [ -f "$CACHE_FILE" ]; then
+  API_USAGE=$(cat "$CACHE_FILE")
+  if [ -n "$API_USAGE" ]; then
+    if [ -n "$right_text" ]; then
+      right_text="$right_text |"
+    fi
+    right_text="$right_text 🕒 $API_USAGE"
+  fi
+fi
+# ===============================
+
 right_text="$right_text "
 
 # 3. Calculate alignment and padding
