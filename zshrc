@@ -30,6 +30,8 @@ alias v='nvim'
 alias vim='nvim'
 alias p3='python3'
 alias red='ssh lucha@matrix.johnfightgaming.com -p 2314'
+alias oc='opencode -c'
+alias sz='source ~/.zshrc'
 
 # Vim integration
 bindkey -v
