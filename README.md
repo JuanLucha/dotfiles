@@ -6,8 +6,9 @@ Repositorio centralizado de configuración de desarrollo y automatización de In
 
 - **`agents/`**: Configuración global de agentes de IA (Antigravity y `agy` CLI).
   - `system_prompt.md`: Directivas base (MariTere, Caveman mode, TDD, memoria semántica).
-  - `skills/`: Habilidades inyectables para automatizar tareas (ej. `init-project` en Markdown puro).
-  - `install.sh`: Script maestro de instalación y enlace de demonios.
+  - `AGENTS.md`: Reglas globales del harness (identidad, uso de `code-now`, prioridad de modelos).
+  - `agents/`: Subagentes del patrón Leader/Worker/Reviewer (`coder.md`, `reviewer.md`).
+  - `skills/`: Habilidades inyectables que los agentes pueden invocar (`code-now`).
 - **`mt-mcp/`**: Servidor de Memoria Semántica Avanzada (Model Context Protocol).
   - `server.py`: Servidor basado en ChromaDB.
   - `indexer.py`: Script de ingesta periódica para notas Foam (`cyber-brain`).
@@ -37,13 +38,18 @@ cd ..
 ```
 *Esto creará la carpeta `.venv` requerida por el cargador de MCP.*
 
-### Paso 3: Ejecutar el Instalador Maestro
-Enlaza el system prompt, registra el servidor MCP, instala las skills y levanta los daemons del sistema:
+### Paso 3: Enlazar la Configuración y los Demonios
+Crea los enlaces simbólicos a mano (o con `stow`) y levanta los daemons del sistema:
 ```bash
-cd agents
-chmod +x install.sh
-./install.sh
+ln -sf "$PWD/agents/system_prompt.md" ~/.gemini/config/system_prompt.md
+ln -sf "$PWD/agents/statusline.sh" ~/.gemini/antigravity-cli/statusline.sh
 ```
+Para las skills, enlaza cada carpeta de `agents/skills/` en los directorios que
+lea tu cliente (`~/.agents/skills`, `~/.claude/skills`, `~/.gemini/skills`,
+`~/.config/opencode/skills`).
+
+Los demonios de memoria se instalan desde `mt-mcp/` (`*.plist` con `launchctl` en
+macOS, `systemd/` con `systemctl --user` en Linux).
 
 ---
 

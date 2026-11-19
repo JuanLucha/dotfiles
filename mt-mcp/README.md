@@ -83,4 +83,19 @@ GIT_BACKUP_REPO=git@github.com:TU_USUARIO/mt-memory-backups.git
 > El archivo `.env` está en `.gitignore` para no exponer IPs ni URLs de repos privados. Configúralo manualmente en cada máquina.
 
 ### 3. Integración con Antigravity
-El archivo `~/.gemini/config/mcp_config.json` es generado automáticamente por `agents/install.sh`. Solo asegúrate de correr `uv sync` antes de ejecutarlo.
+El archivo `~/.gemini/config/mcp_config.json` debe apuntar a este servidor; el
+formato de referencia es:
+
+```json
+{
+  "mcpServers": {
+    "mt-memory": {
+      "command": "/Users/lucha/dotfiles/mt-mcp/.venv/bin/python",
+      "args": ["/Users/lucha/dotfiles/mt-mcp/server.py"],
+      "env": {}
+    }
+  }
+}
+```
+
+Solo asegúrate de correr `uv sync` antes de usarlo.
