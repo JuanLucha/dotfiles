@@ -49,7 +49,7 @@ Para que el CLI use `statusline.sh`, añade esta sección a
 {
   "statusLine": {
     "type": "command",
-    "command": "/Users/lucha/.gemini/antigravity-cli/statusline.sh",
+    "command": "~/.gemini/antigravity-cli/statusline.sh",
     "enabled": true
   }
 }

@@ -13,11 +13,13 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git jump brew colored-man-pages fast-syntax-highlighting zsh-autosuggestions poetry autoenv)
 
+ZSH_DISABLE_COMPFIX="true"
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Private, untracked machine settings (SSH hosts, tokens, etc.)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
-ZSH_DISABLE_COMPFIX="true"
+# User configuration
 
 # Safe rm command to move to trash folder instead of oblivion
 function trash () { command mv "$@" ~/.Trash ; }
@@ -25,11 +27,12 @@ function trash () { command mv "$@" ~/.Trash ; }
 # Personal aliases
 alias t='tmux ls 2>/dev/null | grep -q . && tmux a || tmux'
 alias tk='tmux kill-server'
-alias matrix='ssh root@68.183.73.49'
+# SSH targets live in ~/.zshrc.local: MATRIX_HOST, RED_HOST, RED_PORT
+alias matrix='ssh "${MATRIX_HOST:?set MATRIX_HOST in ~/.zshrc.local}"'
+alias red='ssh "${RED_HOST:?set RED_HOST in ~/.zshrc.local}" -p "${RED_PORT:-22}"'
 alias v='nvim'
 alias vim='nvim'
 alias p3='python3'
-alias red='ssh lucha@matrix.johnfightgaming.com -p 2314'
 alias oc='opencode -c'
 alias sz='source ~/.zshrc'
 
@@ -45,7 +48,7 @@ export KEYTIMEOUT=1
 export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Making more space for operations like tests
-export NODE_OPTIONS=“--max-old-space-size=8192”
+export NODE_OPTIONS="--max-old-space-size=8192"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -97,22 +100,19 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # Added by Windsurf
-export PATH="/Users/lucha/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
 
 # Added by Antigravity
-export PATH="/Users/lucha/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # bun completions
-[ -s "/Users/lucha/.bun/_bun" ] && source "/Users/lucha/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 
-# Added by Antigravity CLI installer
-export PATH="/Users/lucha/.local/bin:$PATH"
-
 # Added by Antigravity IDE
-export PATH="/Users/lucha/.antigravity-ide/antigravity-ide/bin:$PATH"
+export PATH="$HOME/.antigravity-ide/antigravity-ide/bin:$PATH"

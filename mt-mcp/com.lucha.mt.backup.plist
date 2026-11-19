@@ -6,7 +6,9 @@
     <string>com.lucha.mt.backup</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/lucha/dotfiles/mt-mcp/backup.sh</string>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>$HOME/dotfiles/mt-mcp/backup.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -15,9 +17,5 @@
         <key>Minute</key>
         <integer>0</integer>
     </dict>
-    <key>StandardOutPath</key>
-    <string>/tmp/mt_backup.log</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/mt_backup.err</string>
 </dict>
 </plist>

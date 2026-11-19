@@ -14,7 +14,7 @@ Repositorio centralizado de configuración de desarrollo y automatización de In
   - `indexer.py`: Script de ingesta periódica para notas Foam (`cyber-brain`).
   - `backup.sh`: Compresión y rotación (7 días) de la base de datos de memoria.
   - `systemd/` y `*.plist`: Orquestadores de demonios para Linux y macOS.
-- **Clásicos (`nvim/`, `tmux.conf`, `zshrc`, `vimrc`)**: Configuración base de terminal y edición.
+- **Clásicos (`nvim/`, `vim/`, `tmux/`, `zshrc`)**: Configuración base de terminal y edición.
 
 ---
 

@@ -3,6 +3,6 @@
 
 theme = halloween
 
-# 80s CRT look — https://github.com/lucha/ghostty-80s
-custom-shader = shaders/crt80s.glsl
-custom-shader-animation = false
+# Optional: install https://github.com/lucha/ghostty-80s and uncomment for a CRT look
+# custom-shader = shaders/crt80s.glsl
+# custom-shader-animation = false

@@ -90,8 +90,8 @@ formato de referencia es:
 {
   "mcpServers": {
     "mt-memory": {
-      "command": "/Users/lucha/dotfiles/mt-mcp/.venv/bin/python",
-      "args": ["/Users/lucha/dotfiles/mt-mcp/server.py"],
+      "command": "~/dotfiles/mt-mcp/.venv/bin/python",
+      "args": ["~/dotfiles/mt-mcp/server.py"],
       "env": {}
     }
   }

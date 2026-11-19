@@ -11,7 +11,10 @@ fi
 
 DATE=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILENAME="mt_memory_${DATE}.tar.gz"
-TEMP_BACKUP_PATH="/tmp/${BACKUP_FILENAME}"
+TEMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/mt_backup.XXXXXX")"
+GIT_BACKUP_WORKDIR=""
+TEMP_BACKUP_PATH="$TEMP_DIR/$BACKUP_FILENAME"
+trap 'rm -rf "$TEMP_DIR" "$GIT_BACKUP_WORKDIR"' EXIT
 
 echo "📦 Iniciando backup de la memoria semántica (ChromaDB)..."
 
@@ -50,17 +53,9 @@ ls -tp "$CLOUD_BACKUP_DIR"/*.tar.gz | grep -v '/$' | tail -n +8 | xargs -I {} rm
 if [ -n "$GIT_BACKUP_REPO" ]; then
     echo "🔐 Iniciando backup a repositorio Git privado..."
 
-    GIT_BACKUP_WORKDIR="/tmp/mt_git_backup_workdir"
-
-    # Clonar si no existe, hacer pull si ya existe
-    if [ ! -d "$GIT_BACKUP_WORKDIR/.git" ]; then
-        echo "  -> Clonando repositorio remoto por primera vez..."
-        rm -rf "$GIT_BACKUP_WORKDIR"
-        git clone "$GIT_BACKUP_REPO" "$GIT_BACKUP_WORKDIR"
-    else
-        echo "  -> Actualizando repo local..."
-        git -C "$GIT_BACKUP_WORKDIR" pull --rebase --quiet
-    fi
+    GIT_BACKUP_WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/mt_git_backup.XXXXXX")"
+    echo "  -> Clonando repositorio remoto..."
+    git clone "$GIT_BACKUP_REPO" "$GIT_BACKUP_WORKDIR"
 
     # Copiar el backup al directorio del repo
     echo "  -> Copiando backup al repositorio..."
@@ -78,8 +73,5 @@ if [ -n "$GIT_BACKUP_REPO" ]; then
 else
     echo "ℹ️  GIT_BACKUP_REPO no definida. Saltando backup a Git."
 fi
-
-# Limpiar archivo temporal
-rm -f "$TEMP_BACKUP_PATH"
 
 echo "✅ Backup completado con éxito: $BACKUP_FILENAME"

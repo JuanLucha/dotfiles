@@ -48,8 +48,8 @@ if [ -n "$model" ]; then
 fi
 
 # === API USAGE CACHE LOGIC ===
-CACHE_FILE="/tmp/.agy_usage_cache"
-UPDATE_SCRIPT="$HOME/.gemini/antigravity-cli/update_usage.sh"
+CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/agy/usage_cache"
+UPDATE_SCRIPT="$HOME/dotfiles/agents/update_usage.sh"
 
 CACHE_AGE=9999
 if [ -f "$CACHE_FILE" ]; then

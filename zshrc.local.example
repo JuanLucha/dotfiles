@@ -1,0 +1,4 @@
+# Copy to ~/.zshrc.local (never commit that file) and fill in your private targets.
+export MATRIX_HOST="user@example.com"
+export RED_HOST="user@example.com"
+export RED_PORT="22"

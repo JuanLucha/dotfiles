@@ -27,7 +27,7 @@ setup_base_folder='dotfiles'
 setup_paths=(
   "nvim/init.lua"
   "zshrc"
-  "tmux.conf"
+  "tmux/.tmux.conf"
   "reset-tmux.sh"
 )
 
@@ -47,10 +47,6 @@ for i in {0..3}; do
     tmux selectp -t $i
     tmux send-keys "cd ${setup_base_folder} && vim ${setup_paths[$i]}" Enter
 done
-
-# Leave open host file
-tmux splitw -v
-tmux send-keys "sudo nvim /etc/hosts" Enter
 
 # Select the first pane
 tmux selectp -t 0
@@ -105,8 +101,8 @@ for i in "${!window_names[@]}"; do
 done
 
 # Select the first window
-tmux select-window -t "${current_session_id}:0"
+tmux select-window -t "${current_session}:0"
 
 # Attach to the session
-tmux attach-session -t "${current_session_id}"
+tmux attach-session -t "${current_session}"
 

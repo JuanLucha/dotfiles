@@ -6,16 +6,13 @@
     <string>com.lucha.mt.indexer</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/lucha/dotfiles/mt-mcp/.venv/bin/python</string>
-        <string>/Users/lucha/dotfiles/mt-mcp/indexer.py</string>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>$HOME/dotfiles/mt-mcp/.venv/bin/python $HOME/dotfiles/mt-mcp/indexer.py</string>
     </array>
     <key>StartInterval</key>
     <integer>3600</integer>
     <key>RunAtLoad</key>
     <true/>
-    <key>StandardOutPath</key>
-    <string>/tmp/mt_indexer.log</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/mt_indexer.err</string>
 </dict>
 </plist>

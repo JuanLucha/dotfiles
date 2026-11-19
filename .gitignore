@@ -47,6 +47,13 @@ nvim/plugin/packer_compiled.lua
 # Environment-specific local dirs
 .antigravity/
 
+# Local secrets, logs and editor leftovers
+.env
+*.log
+*.swp
+*.swo
+.DS_Store
+
 # Python virtual environments
 .venv/
 venv/

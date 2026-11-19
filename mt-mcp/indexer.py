@@ -6,7 +6,7 @@ from pathlib import Path
 import chromadb
 
 # --- Configuración ---
-FOAM_DIR = "/Users/lucha/cyber-brain"
+FOAM_DIR = os.path.expanduser("~/cyber-brain")
 COLLECTION_NAME = "cyber_brain_memory"
 STATE_DB = os.path.expanduser("~/.gemini/memory_db/indexer_state.db")
 
